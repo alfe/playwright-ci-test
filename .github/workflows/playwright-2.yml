@@ -1,3 +1,4 @@
+# .github\workflows\playwright-2.yml
 name: Playwright Tests 2
 on: push
 jobs:
@@ -9,11 +10,10 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 18
-    - name: Move Directory
-      run: cd playwright
     - name: Install dependencies
-      run: npm ci
+      run: npm --prefix ./playwright ci
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps chromium
+      
+      run: (cd playwright && npx playwright install --with-deps && cd -)
     - name: Run Playwright tests
-      run: npx playwright test
+      run: (cd playwright && npx playwright test && cd -)
