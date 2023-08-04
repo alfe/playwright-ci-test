@@ -13,7 +13,6 @@ jobs:
     - name: Install dependencies
       run: npm --prefix ./playwright ci
     - name: Install Playwright Browsers
-      
-      run: (cd playwright && npx playwright install --with-deps && cd -)
+      run: (cd playwright && npx playwright install --with-deps chromium && cd -)
     - name: Run Playwright tests
       run: (cd playwright && npx playwright test && cd -)
